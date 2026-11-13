@@ -1,0 +1,37 @@
+<svg width="170" height="170" viewBox="0 0 170 170" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Team RK emblem</title>
+  <desc id="logoDesc">Circular gold emblem inspired by plumbing and wrench icon</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDEAA1"/>
+      <stop offset="18%" stop-color="#F5D769"/>
+      <stop offset="45%" stop-color="#D8AE42"/>
+      <stop offset="70%" stop-color="#B98324"/>
+      <stop offset="100%" stop-color="#7A4813"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#D4AF37" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <circle cx="85" cy="85" r="76" fill="#0B0B0B" stroke="url(#gold)" stroke-width="5"/>
+    <circle cx="85" cy="85" r="58" fill="none" stroke="url(#gold)" stroke-width="2" stroke-dasharray="1.5 8" opacity="0.8"/>
+
+    <path d="M85 32C66 32 50.5 47.5 50.5 66.5C50.5 79 56.5 89.8 66.5 96.2L62 129H108L103.5 96.2C113.5 89.8 119.5 79 119.5 66.5C119.5 47.5 104 32 85 32Z" fill="#0B0B0B" stroke="url(#gold)" stroke-width="4"/>
+
+    <path d="M85 46C95.8 46 104.5 54.7 104.5 65.5C104.5 76.3 95.8 85 85 85C74.2 85 65.5 76.3 65.5 65.5C65.5 54.7 74.2 46 85 46Z" fill="url(#gold)" opacity="0.97"/>
+    <path d="M85 58C91.2 58 96.2 63 96.2 69.2C96.2 75.4 91.2 80.4 85 80.4C78.8 80.4 73.8 75.4 73.8 69.2C73.8 63 78.8 58 85 58Z" fill="#0B0B0B"/>
+
+    <path d="M72 128H98V141H72V128Z" fill="url(#gold)"/>
+    <path d="M62 99L42 112L62 125" stroke="url(#gold)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M108 99L128 112L108 125" stroke="url(#gold)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M56 72L35 84L56 96" stroke="url(#gold)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    <path d="M114 72L135 84L114 96" stroke="url(#gold)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+    <path d="M59 50L49 40L38 55L59 50Z" fill="url(#gold)" opacity="0.92"/>
+    <path d="M111 50L121 40L132 55L111 50Z" fill="url(#gold)" opacity="0.92"/>
+    <path d="M67 66V102H75V66H67Z" fill="url(#gold)" opacity="0.92"/>
+    <path d="M95 66V102H103V66H95Z" fill="url(#gold)" opacity="0.92"/>
+  </g>
+</svg>
+
