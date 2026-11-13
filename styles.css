@@ -9,17 +9,18 @@
   --color-accent-light: #f4e9e3;
   --color-accent-rgb: 169, 87, 58;
   --color-secondary: #65665f;
-  --color-surface-bg: #faf9f6;
-  --color-surface-subtle: #f1efea;
-  --color-surface-tint: #e8e4da;
+  --color-surface-bg: #e8e0d4;
+  --color-surface-subtle: #d9cfc1;
+  --color-surface-tint: #cbbda9;
+  --color-surface-card: #f1ebe2;
   --color-text-main: #292a27;
-  --color-text-muted: #686961;
+  --color-text-muted: #595850;
   --color-text-inverted: #fffefa;
-  --color-border: #d7d2c8;
-  --color-border-subtle: #e7e3da;
+  --color-border: #bdb2a2;
+  --color-border-subtle: #cdc2b3;
   --color-hero-overlay: rgba(32, 33, 31, 0.74);
-  --color-card-shadow: 0 10px 28px -18px rgba(32, 33, 31, 0.3);
-  --color-card-shadow-hover: 0 16px 34px -18px rgba(32, 33, 31, 0.3);
+  --color-card-shadow: 0 10px 28px -16px rgba(32, 33, 31, 0.38);
+  --color-card-shadow-hover: 0 16px 34px -16px rgba(32, 33, 31, 0.42);
   --font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-family-heading: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --radius-xs: 3px;
@@ -4325,6 +4326,98 @@ h3 {
     flex: 1 1 auto;
   }
 
+}
+
+body,
+html {
+  background-color: var(--color-surface-bg);
+}
+
+.hero-section,
+.home-page .hero-section {
+  background: var(--color-surface-subtle);
+}
+
+.home-services-section,
+.why-choose-section,
+.features-section,
+.faq-section {
+  background: var(--color-surface-bg);
+}
+
+.home-projects-section,
+.process-section,
+.subpage-hero,
+.card-services-banner,
+.about-process-section {
+  background: var(--color-surface-subtle);
+}
+
+.home-page .home-contact-section {
+  background: var(--color-surface-subtle);
+}
+
+.service-card,
+.faq-item,
+.step-card,
+.video-showcase-card,
+.contact-form-panel,
+.faq-contact-card,
+.about-process-card {
+  background-color: var(--color-surface-card);
+  border-color: var(--color-border);
+}
+
+.service-card,
+.faq-item,
+.video-showcase-card {
+  box-shadow: var(--color-card-shadow);
+}
+
+.home-services-section .service-card {
+  background: var(--color-surface-card);
+}
+
+.home-services-section .service-card:hover {
+  box-shadow: var(--color-card-shadow-hover);
+}
+
+.home-page .hero-section .hero-title,
+.home-page .hero-section .hero-description,
+.home-page .hero-section .hero-service-note,
+.home-page .hero-section .badge-tagline {
+  color: var(--color-text-main);
+}
+
+.home-page .hero-section .hero-title .accent-text {
+  color: var(--color-accent-hover);
+}
+
+.subpage-hero h1 {
+  color: var(--color-primary);
+}
+
+.subpage-hero p {
+  color: var(--color-text-muted);
+}
+
+.subpage-hero .badge-tagline.is-light {
+  color: var(--color-accent-hover);
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+}
+
+.home-page .home-contact-section h2 {
+  color: var(--color-primary);
+}
+
+.home-page .home-contact-section p {
+  color: var(--color-text-muted);
+}
+
+.home-page .home-contact-section .badge-tagline.is-light {
+  color: var(--color-accent-hover);
 }
 
 @media (max-width: 480px) {
