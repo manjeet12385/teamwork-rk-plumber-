@@ -314,19 +314,97 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4500);
   }
 
-  const mobileContactBar = document.createElement('nav');
-  mobileContactBar.className = 'mobile-contact-bar';
-  mobileContactBar.setAttribute('aria-label', 'Quick contact');
-  mobileContactBar.innerHTML = `
-    <a href="tel:6232988023">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Call us
+  const quickContactDock = document.createElement('nav');
+  quickContactDock.className = 'quick-contact-dock';
+  quickContactDock.setAttribute('aria-label', 'Quick contact');
+  quickContactDock.innerHTML = `
+    <a class="quick-contact-link quick-contact-whatsapp" href="https://wa.me/916232988023" target="_blank" rel="noopener noreferrer" aria-label="Message Team RK Plumber on WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      <span>WhatsApp</span>
     </a>
-    <a href="https://wa.me/916232988023" target="_blank" rel="noopener">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-      WhatsApp
+    <a class="quick-contact-link quick-contact-call" href="tel:6232988023" aria-label="Call Team RK Plumber at 6232988023">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>6232988023</span>
     </a>
   `;
-  document.body.appendChild(mobileContactBar);
+  document.body.appendChild(quickContactDock);
+
+  const instagramPopupKey = 'team-rk-instagram-popup-seen';
+  let instagramPopupSeen = false;
+  try {
+    instagramPopupSeen = sessionStorage.getItem(instagramPopupKey) === 'true';
+  } catch (error) {
+    console.error('Unable to check Instagram popup session state:', error);
+  }
+
+  if (!instagramPopupSeen) {
+    const instagramPopup = document.createElement('div');
+    instagramPopup.className = 'instagram-popup-backdrop';
+    instagramPopup.setAttribute('role', 'presentation');
+    instagramPopup.innerHTML = `
+      <section class="instagram-popup-card" role="dialog" aria-modal="true" aria-labelledby="instagram-popup-title" aria-describedby="instagram-popup-description" tabindex="-1">
+        <button class="instagram-popup-close" type="button" aria-label="Close Instagram popup">&times;</button>
+        <span class="instagram-popup-eyebrow">TEAM RK PLUMBER</span>
+        <h2 id="instagram-popup-title">See all our work on Instagram</h2>
+        <p id="instagram-popup-description">Explore photos and videos of our bathroom fitting and plumbing projects.</p>
+        <a class="instagram-popup-visit" href="https://www.instagram.com/team_rk_plumber_lormi_/" target="_blank" rel="noopener noreferrer">Check our work on Instagram</a>
+        <button class="instagram-popup-later" type="button">Maybe later</button>
+      </section>
+    `;
+    document.body.appendChild(instagramPopup);
+
+    const instagramPopupCard = instagramPopup.querySelector('.instagram-popup-card');
+    const closeInstagramPopupButton = instagramPopup.querySelector('.instagram-popup-close');
+    const dismissInstagramPopupButtons = instagramPopup.querySelectorAll('.instagram-popup-close, .instagram-popup-later');
+
+    const closeInstagramPopup = () => {
+      instagramPopup.classList.remove('open');
+      document.body.classList.remove('instagram-popup-open');
+    };
+
+    const showInstagramPopup = () => {
+      if (document.body.classList.contains('modal-open') || document.body.classList.contains('nav-open')) {
+        window.setTimeout(showInstagramPopup, 2000);
+        return;
+      }
+
+      try {
+        sessionStorage.setItem(instagramPopupKey, 'true');
+      } catch (error) {
+        console.error('Unable to save Instagram popup session state:', error);
+      }
+
+      instagramPopup.classList.add('open');
+      document.body.classList.add('instagram-popup-open');
+      closeInstagramPopupButton.focus();
+    };
+
+    dismissInstagramPopupButtons.forEach(button => {
+      button.addEventListener('click', closeInstagramPopup);
+    });
+
+    instagramPopup.querySelector('.instagram-popup-visit').addEventListener('click', closeInstagramPopup);
+    instagramPopup.addEventListener('click', event => {
+      if (event.target === instagramPopup) closeInstagramPopup();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && instagramPopup.classList.contains('open')) {
+        closeInstagramPopup();
+      } else if (event.key === 'Tab' && instagramPopup.classList.contains('open')) {
+        const focusableButtons = instagramPopupCard.querySelectorAll('a, button');
+        const firstButton = focusableButtons[0];
+        const lastButton = focusableButtons[focusableButtons.length - 1];
+        if (event.shiftKey && document.activeElement === firstButton) {
+          event.preventDefault();
+          lastButton.focus();
+        } else if (!event.shiftKey && document.activeElement === lastButton) {
+          event.preventDefault();
+          firstButton.focus();
+        }
+      }
+    });
+
+    window.setTimeout(showInstagramPopup, 8000);
+  }
 
 });
