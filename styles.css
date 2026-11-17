@@ -4424,15 +4424,22 @@ h3 {
 }
 
 .home-page .hero-promo-video {
+  display: flex;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 3vw, 2rem);
+  background:
+    radial-gradient(ellipse at center, rgba(226, 178, 159, 0.1), transparent 58%),
+    linear-gradient(115deg, #293340, #171b25 54%, #303746);
 }
 
 .home-page .hero-feature-video {
   display: block;
   width: 100%;
-  height: clamp(320px, 56.25vw, 780px);
-  object-fit: cover;
-  object-position: center;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
   background: #171b25;
 }
 
@@ -4497,11 +4504,6 @@ h3 {
 }
 
 @media (max-width: 560px) {
-  .home-page .hero-feature-video {
-    height: auto;
-    aspect-ratio: 9 / 16;
-  }
-
   .home-page .hero-service-strip {
     padding-right: 0.35rem;
     padding-left: 0.35rem;
@@ -4966,9 +4968,7 @@ body.nav-open .quick-contact-dock {
 .home-services-section video.card-img:fullscreen,
 .home-services-section video.card-img:-webkit-full-screen,
 .video-frame-container video:fullscreen,
-.video-frame-container video:-webkit-full-screen,
-.home-page video.hero-feature-video:fullscreen,
-.home-page video.hero-feature-video:-webkit-full-screen {
+.video-frame-container video:-webkit-full-screen {
   object-fit: contain;
   background-color: #000000;
 }
