@@ -3864,10 +3864,6 @@ body {
     grid-template-columns: 1fr 1fr;
   }
 
-  .home-page .project-gallery-item:last-child {
-    display: none;
-  }
-
   .home-contact-section .container {
     align-items: flex-start;
     flex-direction: column;
@@ -3896,10 +3892,6 @@ body {
   .home-page .why-choose-grid,
   .home-page .process-section .steps-grid {
     grid-template-columns: 1fr;
-  }
-
-  .home-page .project-gallery-item:last-child {
-    display: block;
   }
 
   .home-page .project-gallery-item img {

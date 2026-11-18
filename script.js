@@ -4,6 +4,39 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  const hideHumanImages = () => {
+    const humanPatterns = /\b(?:plumber|technician|workers?|team|people|person|man|woman|installer|on-site|worksite|site work)\b/i;
+
+    document.querySelectorAll('img[alt]').forEach((img) => {
+      const altText = (img.getAttribute('alt') || '').trim();
+      const ariaLabel = (img.getAttribute('aria-label') || '').trim();
+
+      if (!altText && !ariaLabel) return;
+      if (img.closest('.brand-logo-img, .footer-logo-img') || img.src.includes('logo.png')) return;
+
+      const signalText = `${altText} ${ariaLabel}`.toLowerCase();
+      if (!humanPatterns.test(signalText)) return;
+      img.dataset.personImage = 'true';
+
+      const hideTargets = [
+        img.closest('.project-team-card'),
+        img.closest('.project-gallery-item'),
+        img.closest('.photo-gallery-card'),
+        img.closest('.home-experience-visual'),
+        img.closest('.card-img-holder'),
+        img.closest('figure'),
+        img.closest('.gallery-item'),
+        img.parentElement
+      ].filter(Boolean);
+
+      hideTargets.forEach((target) => {
+        target.style.display = 'none';
+      });
+    });
+  };
+
+  hideHumanImages();
+
   // MOBILE NAVIGATION DRAWER
   const mobileToggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
