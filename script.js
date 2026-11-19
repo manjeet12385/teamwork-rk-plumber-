@@ -37,6 +37,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   hideHumanImages();
 
+  document.querySelectorAll('video[controls]').forEach((video) => {
+    const frame = video.parentElement;
+    if (!frame) return;
+
+    frame.classList.add('video-thumbnail-frame');
+
+    const overlay = document.createElement('div');
+    overlay.className = 'video-thumbnail-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+
+    const badge = document.createElement('span');
+    badge.className = 'video-thumbnail-badge';
+    badge.textContent = 'TEAM RK PLUMBER';
+
+    const playIcon = document.createElement('span');
+    playIcon.className = 'video-thumbnail-play';
+    playIcon.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13L19 12 8 5.5Z"></path></svg>';
+
+    const caption = document.createElement('span');
+    caption.className = 'video-thumbnail-caption';
+    caption.textContent = 'REAL PROJECT FOOTAGE';
+
+    overlay.append(badge, playIcon, caption);
+    frame.append(overlay);
+
+    const updatePlaybackState = () => {
+      frame.classList.toggle('is-playing', !video.paused && !video.ended);
+    };
+
+    video.addEventListener('play', updatePlaybackState);
+    video.addEventListener('pause', updatePlaybackState);
+    video.addEventListener('ended', updatePlaybackState);
+    updatePlaybackState();
+  });
+
   // MOBILE NAVIGATION DRAWER
   const mobileToggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');

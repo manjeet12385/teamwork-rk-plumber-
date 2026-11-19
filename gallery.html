@@ -6,7 +6,7 @@
   <title>Gallery &amp; Videos - TEAM RK PLUMBER | Real Bathroom &amp; Plumbing Work</title>
   <meta name="description" content="Photos and videos of plumbing and bathroom fitting projects by Team RK Plumber in Lormi and nearby areas.">
   <link rel="icon" type="image/png" href="logo.png?v=1">
-  <link rel="stylesheet" href="styles.css?v=50">
+  <link rel="stylesheet" href="styles.css?v=60">
 </head>
 <body>
 <div class="page-contact-strip">
@@ -65,33 +65,9 @@
     </div>
   </header>
 
-  <!-- ================= SUBPAGE HERO ================= -->
-  <section class="subpage-hero gallery-page-hero">
-    <div class="subpage-hero-overlay"></div>
-    <div class="container gallery-hero-layout">
-      <div class="subpage-hero-content">
-        <div class="badge-tagline is-light"><span class="badge-dot"></span>ON-SITE REAL SHOWCASE</div>
-        <h1>Project Gallery &amp; Real Videos</h1>
-        <p>Explore photos and videos of Team RK Plumber projects. Call or WhatsApp us about bathroom fittings or plumbing work.</p>
-      </div>
-      <div class="gallery-hero-brand">
-        <img src="assets/images/team_rk_logo_clean.png" alt="Gold RK plumbing emblem and wordmark">
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= GALLERY FILTER TABS ================= -->
+  <!-- ================= GALLERY CONTENT ================= -->
   <section class="section-padding-large">
     <div class="container">
-      
-      <div class="gallery-filter-bar">
-        <button class="gallery-filter-btn active" data-filter="all">All Media</button>
-        <button class="gallery-filter-btn" data-filter="videos">🎥 Real Videos &amp; Reels (6)</button>
-        <button class="gallery-filter-btn" data-filter="bathrooms">🚿 Luxury Bathrooms</button>
-        <button class="gallery-filter-btn" data-filter="wall-hung">🚽 Wall-Hung Commodes</button>
-        <button class="gallery-filter-btn" data-filter="plumbing">🔧 Pipeline &amp; Plumbing</button>
-      </div>
-
       <!-- ================= SECTION A: REAL INSTAGRAM VIDEOS ================= -->
       <div class="gallery-category-block gallery-video-category" data-category="videos" style="margin-bottom: 5rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
@@ -709,39 +685,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=10"></script>
-  <!-- Gallery Filter Script -->
-  <script>
-    document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.gallery-filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.getAttribute('data-filter');
-        
-        const videoBlock = document.querySelector('[data-category="videos"]');
-        const photoBlock = document.querySelector('[data-category="photos"]');
-        const photoCards = document.querySelectorAll('.photo-gallery-card');
-
-        if (filter === 'all') {
-          if (videoBlock) videoBlock.style.display = 'block';
-          if (photoBlock) photoBlock.style.display = 'block';
-          photoCards.forEach(c => c.style.display = c.querySelector('img[data-person-image="true"]') ? 'none' : 'block');
-        } else if (filter === 'videos') {
-          if (videoBlock) videoBlock.style.display = 'block';
-          if (photoBlock) photoBlock.style.display = 'none';
-        } else {
-          if (videoBlock) videoBlock.style.display = 'none';
-          if (photoBlock) photoBlock.style.display = 'block';
-          photoCards.forEach(c => {
-            if (!c.querySelector('img[data-person-image="true"]') && (c.getAttribute('data-cat') === filter || c.getAttribute('data-cat') === 'all')) {
-              c.style.display = 'block';
-            } else {
-              c.style.display = 'none';
-            }
-          });
-        }
-      });
-    });
-  </script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>
